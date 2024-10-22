@@ -12,13 +12,13 @@ form.addEventListener("submit", (event) => {
     return;
   } 
 
-//P: to convert input values to numbers
+//P: to convert input values to numbers and to check for letters and special characters
 const dividendNumber = Number(dividend);
 const dividerNumber = Number(divider);
 const regEX = /^[a-zA-Z]+$/;
 
 
-//P: to check for division by 0
+//P: to check for division by 0 and if it contains letters and special characters
 if(dividerNumber === 0) {
   result.innerText = `Division not performed. Invalid number provided. Try again.`;
   console.error(`Division not performed. Invalid number provided. Try again.`);
