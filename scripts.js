@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-expressions */
 const form = document.querySelector("[data-form]");
 const result = document.querySelector("[data-result]");
 
