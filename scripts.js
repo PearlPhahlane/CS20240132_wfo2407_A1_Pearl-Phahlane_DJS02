@@ -15,12 +15,17 @@ form.addEventListener("submit", (event) => {
 //P: to convert input values to numbers
 const dividendNumber = Number(dividend);
 const dividerNumber = Number(divider);
+const regEX = /^[a-zA-Z]+$/;
+
 
 //P: to check for division by 0
 if(dividerNumber === 0) {
   result.innerText = `Division not performed. Invalid number provided. Try again.`;
   console.error(`Division not performed. Invalid number provided. Try again.`);
-} else {
+} else if (regEX.test(dividend) || regEX.test(divider)) {
+    document.body.innerHTML = `Something critical went wrong. Please reload the page.`;
+    console.error(new Error("Critical error: something went wrong."));
+  } else {
   result.innerText = Math.floor(dividendNumber / dividerNumber);
 }
 });
