@@ -12,19 +12,31 @@ form.addEventListener("submit", (event) => {
   } 
 
 //P: to convert input values to numbers and to check for letters and special characters
-const dividendNumber = Number(dividend);
-const dividerNumber = Number(divider);
-const regEX = /^[a-zA-Z]+$/;
+  const dividendNumber = Number(dividend);
+  const dividerNumber = Number(divider);
+  const regEX = /^[a-zA-Z]+$/;
 
+//P: add try catch block for handling errors
+  try {
+    if (dividerNumber === 0) {
+      throw new Error(
+          "Division not performed. Invalid number provided. Try again.");
+    }
 
-//P: to check for division by 0 and if it contains letters and special characters
-if(dividerNumber === 0) {
-  result.innerText = `Division not performed. Invalid number provided. Try again.`;
-  console.error(`Division not performed. Invalid number provided. Try again.`);
-} else if (regEX.test(dividend) || regEX.test(divider)) {
-    document.body.innerHTML = `Something critical went wrong. Please reload the page.`;
-    console.error(new Error("Critical error: something went wrong."));
-  } else {
-  result.innerText = Math.floor(dividendNumber / dividerNumber);
-}
+    if (regEX.test(dividend) || regEX.test(divider)) {
+      throw new Error("Something critical went wrong. Please reload the page.");
+    }
+
+    result.innerText = Math.floor(dividendNumber / dividerNumber);
+
+  } catch (error) {
+    console.error(Error);
+    
+    if (error.message.includes('Invalid number')) {
+      result.innerText = error.message;
+    }
+    if (error.message.includes('critical')) {
+      document.body.innerHTML = error.message;
+    }
+  }
 });
